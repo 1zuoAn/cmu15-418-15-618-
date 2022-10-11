@@ -9,19 +9,19 @@ idea**
 
 ## 部署步骤及运行过程
 
-**1. 启动mysql server 8.0.3
-在终端输入:mysql -u root -p
-2. 利用idea打开指定项目——pointName
-3. 在idea中配置所需数据库
- [配置数据库](https://blog.csdn.net/qq_61407171/article/details/121705452)
-数据库具体配置如下图：password为dax71205**
-![](https://img-blog.csdnimg.cn/ad58c825e6d84149bbfa55c5a53d32e7.png)
+**1. 启动mysql server 8.0.3  
+在终端输入:mysql -u root -p  
+2. 利用idea打开指定项目——pointName  
+3. 在idea中配置所需数据库  
+ [配置数据库](https://blog.csdn.net/qq_61407171/article/details/121705452)  
+数据库具体配置如下图：password为dax71205**  
+![](https://img-blog.csdnimg.cn/ad58c825e6d84149bbfa55c5a53d32e7.png)  
 
 
-4. 在idea中运行run类下的main方法
+4. 在idea中运行run类下的main方法  
  
-5. **终端输出20次E的值**，并在数据库point中产生两张table，表**records**记载450名学生的个人信息以及其出勤的课程与**出勤情况**(用20位的字符串表示，0代表未出勤，1代表出勤)，而表**pointrecords**记载着450名学生的个人信息以及**点名记录**(用20位的字符串表示，0代表未点名到，1代表有效点名即点名到逃课学生，2代表无效点名)
-6. 可用mysql在数据库中查看两张表的信息
+5. **终端输出20次E的值**，并在数据库point中产生两张table，表**records**记载450名学生的个人信息以及其出勤的课程与**出勤情况**(用20位的字符串表示，0代表未出勤，1代表出勤)，而表**pointrecords**记载着450名学生的个人信息以及**点名记录**(用20位的字符串表示，0代表未点名到，1代表有效点名即点名到逃课学生，2代表无效点名)  
+6. 可用mysql在数据库中查看两张表的信息  
 ```
 mysql语句：
 use point; //选中point数据库
