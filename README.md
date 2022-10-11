@@ -32,36 +32,37 @@ ps:若只想查看学生的出勤记录与点名记录，select course from reco
 
 
 ## 目录结构描述
-**MAIN
-│  README.md 
-│
-└─pointName
-&emsp;│  Class.iml
-&emsp;│
-&emsp;├─.idea
-&emsp;│  │  .gitignore
-&emsp;│  │  misc.xml
-&emsp;│  │  modules.xml
-&emsp;│  │  uiDesigner.xml
-&emsp;│  │  workspace.xml
-&emsp;│  │
-&emsp;│  └─codeStyles
-&emsp;│          codeStyleConfig.xml
-&emsp;│          Project.xml
-&emsp;│
-&emsp;└─Class
-&emsp;&emsp;Class.iml 
-&emsp;&emsp;BuildFirstName.java //初始化姓氏
-&emsp;&emsp;BuildLastName.java //初始化名字
-&emsp;&emsp;BuildName.java //初始化姓名
-&emsp;&emsp;Course.java //单节课程对象
-&emsp;&emsp;Generate.java //各种信息的初始化
-&emsp;&emsp;Lessons.java //课程总表
-&emsp;&emsp;Read.java //连接数据库并从数据库上读取信息
-&emsp;&emsp;Run.java //运行函数
-&emsp;&emsp;Sample.java //点名
-&emsp;&emsp;Student.java //单个学生对象
-&emsp;&emsp;Students.java //学生总表**
+
+**MAIN  
+│  README.md  
+│  
+└─pointName  
+&emsp;│  Class.iml  
+&emsp;│  
+&emsp;├─.idea  
+&emsp;│  │  .gitignore  
+&emsp;│  │  misc.xml  
+&emsp;│  │  modules.xml  
+&emsp;│  │  uiDesigner.xml  
+&emsp;│  │  workspace.xml  
+&emsp;│  │  
+&emsp;│  └─codeStyles  
+&emsp;│          codeStyleConfig.xml  
+&emsp;│          Project.xml  
+&emsp;│  
+&emsp;└─Class  
+&emsp;&emsp;Class.iml   
+&emsp;&emsp;BuildFirstName.java //初始化姓氏  
+&emsp;&emsp;BuildLastName.java //初始化名字  
+&emsp;&emsp;BuildName.java //初始化姓名  
+&emsp;&emsp;Course.java //单节课程对象  
+&emsp;&emsp;Generate.java //各种信息的初始化  
+&emsp;&emsp;Lessons.java //课程总表  
+&emsp;&emsp;Read.java //连接数据库并从数据库上读取信息  
+&emsp;&emsp;Run.java //运行函数  
+&emsp;&emsp;Sample.java //点名  
+&emsp;&emsp;Student.java //单个学生对象  
+&emsp;&emsp;Students.java //学生总表**  
 
 
 
