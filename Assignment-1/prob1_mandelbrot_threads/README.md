@@ -3,8 +3,9 @@
 并不是单纯的线性关系，由于我的运行环境是在8核下进行，所以可以看到，t = 8 与 t = 16 并无明显变化，这是因为如果开16线程，那么部分线程间(同一个进程下的)，仍然是并发的关系，并没有形成并行。但在此之前，加速比的变化是与t值呈线性关系的。
 
 ###  t = 2
-![](https://img-blog.csdnimg.cn/40be2bf29dd9416c9e51c3142f365cf2.png)
-###  t = 8![请添加图片描述](https://img-blog.csdnimg.cn/afa84e0b92d14fc5887e8a8369ad89e1.png)
+![](https://img-blog.csdnimg.cn/40be2bf29dd9416c9e51c3142f365cf2.png)  
+### t = 8
+![](https://img-blog.csdnimg.cn/afa84e0b92d14fc5887e8a8369ad89e1.png)  
 ### t = 4
 ![](https://img-blog.csdnimg.cn/edbdaca8b7a44e33b9faeceea0b69da7.png)
 ### t = 16
