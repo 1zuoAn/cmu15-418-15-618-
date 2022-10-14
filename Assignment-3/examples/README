@@ -1,0 +1,12 @@
+Example OpenMP programs 
+
+*********
+0. Files
+*********
+
+README          This file.
+Makefile        Compiles the programs.
+hello.c         Simple hello world program.
+sqrt.c          Calculate the square root of a sequence of numbers.
+loop.c          Add two vectors in parallel using dynamic load-balancing.
+
