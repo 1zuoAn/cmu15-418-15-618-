@@ -37,9 +37,8 @@ export void mandelbrot_ispc(uniform float x0, uniform float y0,
             output[index] = mandel(x, y, maxIterations);
     }
 }
-
-// A version of the Mandelbrot computation that processes two points
-// simultaneously to increase the level of instruction-level parallelism
+// 处理两个点的 Mandelbrot 计算版本
+// 同时提高指令级并行度
 static inline void mandel_par2(float c_re0, float c_im0, float c_re1, float c_im1, int count, int *iters0, int *iters1) {
     float z_re0 = c_re0, z_im0 = c_im0;
     float z_re1 = c_re1, z_im1 = c_im1;
@@ -75,8 +74,9 @@ static inline void mandel_par2(float c_re0, float c_im0, float c_re1, float c_im
     *iters1 = done1 ? icount1 : i;
 }
 
-// ISPC code to do the Mandelbrot computation across
-// an entire array, using two-way parallelism to process two rows at a time
+
+// ISPC 代码进行 Mandelbrot 计算
+// 整个数组，使用双向并行一次处理两行
 export void mandelbrot_ispc_par2(uniform float x0, uniform float y0, 
                             uniform float x1, uniform float y1,
                             uniform int width, uniform int height, 
@@ -85,18 +85,28 @@ export void mandelbrot_ispc_par2(uniform float x0, uniform float y0,
 {
     uniform float dx = (x1 - x0) / width;
     uniform float dy = (y1 - y0) / height;
+    uniform int j1 = (height-1)/2;
+    foreach (j = 0 ... j1 , i = 0 ... width) {
+            float x = x0 + i * dx;
+            float x_2 = x0 + i * dx;
+            float y = y0 + j * dy;
+            float y_2 = y0 + (j + j1) * dy;
+            int index1 = j * width + i;
+            int index2 = (j + j1) * width + i;
+            mandel_par2(x, y, x_2,y_2,maxIterations,output+index1,output+index2);
+    }
+    foreach (j = 2 * j1 ... height, i = 0 ... width) {
+            float x = x0 + i * dx;
+            float y = y0 + j * dy;
 
-    // TODO: Write ISPC code that will use function mandel_par2 to process
-    // two rows on each pass.
-    // You should use the foreach construct.
-    // You should handle the case where the height is not a multiple
-    // of 2.
-
+            int index = j * width + i;
+            output[index] = mandel(x, y, maxIterations);
+    }
 }
 
 // TODO: Try different block sizes
-#define BLOCK_WIDTH  800
-#define BLOCK_HEIGHT 600
+#define BLOCK_WIDTH  321 //1250
+#define BLOCK_HEIGHT 187 //750
 
 // slightly different kernel to support tasking
 task void mandelbrot_ispc_task(uniform float x0, uniform float y0, 
@@ -106,7 +116,7 @@ task void mandelbrot_ispc_task(uniform float x0, uniform float y0,
                                uniform int output[])
 {
 
-    // taskIndex is an ISPC built-in
+   // taskIndex 是 ISPC 内置的
 
     uniform int bstride = (width + BLOCK_WIDTH - 1) / BLOCK_WIDTH;
     
@@ -134,10 +144,13 @@ export void mandelbrot_ispc_withtasks(uniform float x0, uniform float y0,
                                       uniform int output[])
 {
 
-    // TODO: Figure out how many tasks to launch
-    uniform int taskCount = 4;
+    
+    // TODO: 计算要启动多少个任务
+    uniform int cnt1 = height % BLOCK_HEIGHT ? height/BLOCK_HEIGHT+1 : height/BLOCK_HEIGHT;
+    uniform int cnt2 = width % BLOCK_WIDTH ? width/BLOCK_WIDTH+1 : width/BLOCK_WIDTH;
+    uniform int taskCount = cnt1*cnt2;
 
-    // create a bunch of tasks
+    // 创建一堆任务
     launch[taskCount] mandelbrot_ispc_task(x0, y0, x1, y1,
                                          width, height,
                                          maxIterations,
