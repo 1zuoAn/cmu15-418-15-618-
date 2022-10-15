@@ -14,7 +14,7 @@ void initGood(float *values, int N) {
     for (int i=0; i<N; i++)
     {
         // TODO: Choose data values that will yield high speedup
-        values[i] = 1.f;
+        values[i] = 1.9f; //无限接近2吧，好像2跑不出来 迭代次数是无穷
     }
 }
 
@@ -23,7 +23,7 @@ void initBad(float *values, int N) {
     for (int i=0; i<N; i++)
     {
         // TODO: Choose data values that will yield low speedup
-        values[i] = 1.f;
+        values[i] = -1.f;
     }
 }
 
