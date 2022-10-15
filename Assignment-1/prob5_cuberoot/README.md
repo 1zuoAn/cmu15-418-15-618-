@@ -1,5 +1,5 @@
 # 迭代立方根
 ## 关于good和bad版本，时间与加速比的差异的原因。
-![DSIWX9M13$U@~57%7OAKSGR](https://user-images.githubusercontent.com/97599487/195972809-56e5f781-17c6-4045-861d-652759c5ebe0.png)
+![DSIWX9M13$U@~57%7OAKSGR](https://user-images.githubusercontent.com/97599487/195972809-56e5f781-17c6-4045-861d-652759c5ebe0.png)  
 如上图所示(-d g代表good，-d b代表bad)  
 原因应该是与迭代次数，也就是数学运算时间的开销有关。前者由于迭代次数很多，导致计算所耗时间很多，而ISPC对于数学运算的增幅是很巨大的，多核加速也是在计算方面的。详见第四题的博客嗷，里面有提到相关内容，这里就不再赘述。
